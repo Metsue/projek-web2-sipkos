@@ -63,6 +63,9 @@ class Router
     {
         $request_method = $_SERVER['REQUEST_METHOD'];
         $request_url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        // Remove possible index.php from request URL
+        $request_url = preg_replace('#/index\.php#i', '', $request_url);
         
         // Remove base URL from request
         $base_path = parse_url(BASE_URL, PHP_URL_PATH);
