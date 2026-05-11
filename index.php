@@ -9,6 +9,8 @@
     <h1>PHP Test</h1>
     <?php
         echo "Hello, wordl, anuu";
+        echo "<br>";
+        echo "Hello, wordl, anuu";
     ?>
     
 </body>
