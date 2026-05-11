@@ -38,6 +38,24 @@ class User extends Model
     }
 
     /**
+     * Find user by email or username
+     * 
+     * @param string $identifier
+     * @return array|null
+     */
+    public function findByEmailOrUsername($identifier)
+    {
+        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+            $user = $this->findByEmail($identifier);
+            if ($user) {
+                return $user;
+            }
+        }
+
+        return $this->findByUsername($identifier);
+    }
+
+    /**
      * Register user baru
      * 
      * @param array $data

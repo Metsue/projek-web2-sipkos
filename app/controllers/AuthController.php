@@ -41,17 +41,17 @@ class AuthController extends Controller
         }
 
         // Get POST data
-        $email = $this->post('email');
+        $identifier = $this->post('identifier');
         $password = $this->post('password');
 
         // Validate input
         $errors = $this->validate([
-            'email' => ['required', 'email'],
+            'identifier' => ['required', 'min:3'],
             'password' => ['required', 'min:6']
         ]);
 
         if (!empty($errors)) {
-            $this->setFlash('error', 'Email atau password tidak valid');
+            $this->setFlash('error', 'Email/username atau password tidak valid');
             $this->redirect('login');
         }
 
@@ -59,8 +59,8 @@ class AuthController extends Controller
         require_once APP . 'models/User.php';
         $user_model = new User();
 
-        // Find user by email
-        $user = $user_model->findByEmail($email);
+        // Find user by email or username
+        $user = $user_model->findByEmailOrUsername($identifier);
 
         if (!$user) {
             $this->setFlash('error', 'User tidak ditemukan');

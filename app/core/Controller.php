@@ -20,11 +20,18 @@ class Controller
         // Path ke file view
         $file_path = APP . 'views/' . $view_path . '.php';
 
-        if (file_exists($file_path)) {
-            include $file_path;
-        } else {
+        if (!file_exists($file_path)) {
             die("View not found: " . $view_path);
         }
+
+        // For auth pages, render full page directly
+        if (strpos($view_path, 'auth/') === 0) {
+            include $file_path;
+            return;
+        }
+
+        // Use master layout for admin/penghuni/public pages
+        include APP . 'views/layouts/master.php';
     }
 
     // Method untuk redirect

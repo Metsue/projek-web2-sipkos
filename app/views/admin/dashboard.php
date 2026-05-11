@@ -3,7 +3,7 @@
         <h2 class="mb-0">
             <i class="fas fa-chart-line"></i> Dashboard Admin
         </h2>
-        <p class="text-muted">Selamat datang kembali, <?php echo htmlspecialchars($stats['total_kamar'] ?? 'Admin'); ?></p>
+        <p class="text-muted">Selamat datang kembali, <?php echo htmlspecialchars($_SESSION['user']['nama'] ?? 'Admin'); ?></p>
     </div>
 </div>
 

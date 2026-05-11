@@ -41,7 +41,10 @@ class PenghuniController extends Controller
         $penghuni = $penghuni_model->findByUserId($_SESSION['user_id']);
 
         if (!$penghuni) {
-            $this->redirect('login');
+            $this->view('penghuni/missing_profile', [
+                'title' => 'Akun Penghuni Belum Lengkap - SIPKOS'
+            ]);
+            return;
         }
 
         // Get pembayaran history
@@ -81,7 +84,10 @@ class PenghuniController extends Controller
         $penghuni = $penghuni_model->findByUserId($_SESSION['user_id']);
 
         if (!$penghuni) {
-            $this->redirect('login');
+            $this->view('penghuni/missing_profile', [
+                'title' => 'Akun Penghuni Belum Lengkap - SIPKOS'
+            ]);
+            return;
         }
 
         // Get kamar info
@@ -111,7 +117,10 @@ class PenghuniController extends Controller
         $penghuni = $penghuni_model->findByUserId($_SESSION['user_id']);
 
         if (!$penghuni) {
-            $this->redirect('login');
+            $this->view('penghuni/missing_profile', [
+                'title' => 'Akun Penghuni Belum Lengkap - SIPKOS'
+            ]);
+            return;
         }
 
         // Update penghuni data
@@ -145,7 +154,10 @@ class PenghuniController extends Controller
         $penghuni = $penghuni_model->findByUserId($_SESSION['user_id']);
 
         if (!$penghuni) {
-            $this->redirect('login');
+            $this->view('penghuni/missing_profile', [
+                'title' => 'Akun Penghuni Belum Lengkap - SIPKOS'
+            ]);
+            return;
         }
 
         // Get pembayaran history

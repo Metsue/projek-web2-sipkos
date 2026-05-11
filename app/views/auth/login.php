@@ -180,10 +180,10 @@
 
             <form action="<?php echo ROUTE_URL; ?>login" method="POST">
                 <div class="form-group">
-                    <label for="email" class="form-label">
-                        <i class="fas fa-envelope"></i> Email
+                    <label for="identifier" class="form-label">
+                        <i class="fas fa-envelope"></i> Email atau Username
                     </label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email anda" required>
+                    <input type="text" class="form-control" id="identifier" name="identifier" placeholder="Masukkan email atau username" required>
                 </div>
 
                 <div class="form-group">
