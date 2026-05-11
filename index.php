@@ -10,7 +10,7 @@
     <?php
         echo "Hello, wordl, anuu";
         echo "<br>";
-        echo "Hello, wordl, anuu";
+        echo "Hello, wordl, anuub";
     ?>
     
 </body>
