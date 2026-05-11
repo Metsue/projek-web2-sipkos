@@ -3,7 +3,7 @@
         <h2><i class="fas fa-credit-card"></i> Data Pembayaran</h2>
     </div>
     <div class="col-md-4 text-end">
-        <a href="<?php echo BASE_URL; ?>admin/pembayaran/create" class="btn btn-primary">
+        <a href="<?php echo ROUTE_URL; ?>admin/pembayaran/create" class="btn btn-primary">
             <i class="fas fa-plus"></i> Catat Pembayaran
         </a>
     </div>
@@ -45,10 +45,10 @@
                                 </td>
                                 <td><?php echo htmlspecialchars($item['tanggal_bayar'] ?? '-'); ?></td>
                                 <td>
-                                    <a href="<?php echo BASE_URL; ?>admin/pembayaran/edit?id=<?php echo $item['id_pembayaran']; ?>" class="btn btn-sm btn-warning" title="Edit">
+                                    <a href="<?php echo ROUTE_URL; ?>admin/pembayaran/edit?id=<?php echo $item['id_pembayaran']; ?>" class="btn btn-sm btn-warning" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="<?php echo BASE_URL; ?>admin/pembayaran/delete?id=<?php echo $item['id_pembayaran']; ?>" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus?');">
+                                    <a href="<?php echo ROUTE_URL; ?>admin/pembayaran/delete?id=<?php echo $item['id_pembayaran']; ?>" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus?');">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -62,3 +62,4 @@
         <?php endif; ?>
     </div>
 </div>
+

@@ -34,7 +34,7 @@
                         <h5 class="mb-0">Laporan Pembayaran <?php echo htmlspecialchars($filter_bulan) . '/' . htmlspecialchars($filter_tahun); ?></h5>
                     </div>
                     <div class="col-md-6 text-end">
-                        <form action="<?php echo BASE_URL; ?>admin/laporan/export-pdf" method="POST" style="display: inline;">
+                        <form action="<?php echo ROUTE_URL; ?>admin/laporan/export-pdf" method="POST" style="display: inline;">
                             <input type="hidden" name="bulan" value="<?php echo htmlspecialchars($filter_bulan); ?>">
                             <input type="hidden" name="tahun" value="<?php echo htmlspecialchars($filter_tahun); ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -100,3 +100,4 @@
         </div>
     </div>
 </div>
+

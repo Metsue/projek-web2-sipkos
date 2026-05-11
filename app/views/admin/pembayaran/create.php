@@ -3,7 +3,7 @@
         <h2><i class="fas fa-plus-circle"></i> Catat Pembayaran</h2>
     </div>
     <div class="col-md-4 text-end">
-        <a href="<?php echo BASE_URL; ?>admin/pembayaran" class="btn btn-secondary">
+        <a href="<?php echo ROUTE_URL; ?>admin/pembayaran" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i> Kembali
         </a>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <form action="<?php echo BASE_URL; ?>admin/pembayaran/store" method="POST">
+                <form action="<?php echo ROUTE_URL; ?>admin/pembayaran/store" method="POST">
                     <div class="form-group mb-3">
                         <label for="id_penghuni" class="form-label">Pilih Penghuni *</label>
                         <select class="form-select" id="id_penghuni" name="id_penghuni" required>
@@ -64,7 +64,7 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i> Simpan
                         </button>
-                        <a href="<?php echo BASE_URL; ?>admin/pembayaran" class="btn btn-secondary">
+                        <a href="<?php echo ROUTE_URL; ?>admin/pembayaran" class="btn btn-secondary">
                             <i class="fas fa-times"></i> Batal
                         </a>
                     </div>
@@ -73,3 +73,4 @@
         </div>
     </div>
 </div>
+

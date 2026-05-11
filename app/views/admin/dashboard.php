@@ -69,7 +69,7 @@
 
     <div class="col-md-3 col-sm-6 mb-3">
         <div class="stat-card">
-            <a href="<?php echo BASE_URL; ?>admin/laporan" style="color: inherit; text-decoration: none;">
+            <a href="<?php echo ROUTE_URL; ?>admin/laporan" style="color: inherit; text-decoration: none;">
                 <i class="fas fa-file-pdf fa-2x" style="color: #fd7e14;"></i>
                 <h3 style="font-size: 18px; margin-top: 10px;">Laporan</h3>
                 <p>Lihat Laporan</p>
@@ -145,22 +145,22 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="<?php echo BASE_URL; ?>admin/kamar/create" class="btn btn-outline-primary btn-block w-100">
+                        <a href="<?php echo ROUTE_URL; ?>admin/kamar/create" class="btn btn-outline-primary btn-block w-100">
                             <i class="fas fa-plus"></i> Tambah Kamar
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="<?php echo BASE_URL; ?>admin/penghuni/create" class="btn btn-outline-info btn-block w-100">
+                        <a href="<?php echo ROUTE_URL; ?>admin/penghuni/create" class="btn btn-outline-info btn-block w-100">
                             <i class="fas fa-user-plus"></i> Tambah Penghuni
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="<?php echo BASE_URL; ?>admin/pembayaran/create" class="btn btn-outline-warning btn-block w-100">
+                        <a href="<?php echo ROUTE_URL; ?>admin/pembayaran/create" class="btn btn-outline-warning btn-block w-100">
                             <i class="fas fa-receipt"></i> Catat Pembayaran
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="<?php echo BASE_URL; ?>admin/laporan" class="btn btn-outline-success btn-block w-100">
+                        <a href="<?php echo ROUTE_URL; ?>admin/laporan" class="btn btn-outline-success btn-block w-100">
                             <i class="fas fa-file-pdf"></i> Lihat Laporan
                         </a>
                     </div>
@@ -169,3 +169,4 @@
         </div>
     </div>
 </div>
+

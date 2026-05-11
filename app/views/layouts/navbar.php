@@ -16,7 +16,7 @@ $current_user = $_SESSION['user'] ?? null;
                     <i class="fas fa-user-circle"></i>
                     <?php echo htmlspecialchars($current_user['nama'] ?? 'User'); ?>
                 </span>
-                <a href="<?php echo BASE_URL; ?>logout" class="btn btn-sm btn-outline-danger">
+                <a href="<?php echo ROUTE_URL; ?>logout" class="btn btn-sm btn-outline-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>
@@ -32,3 +32,4 @@ $current_user = $_SESSION['user'] ?? null;
         }
     });
 </script>
+

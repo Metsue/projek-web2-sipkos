@@ -11,7 +11,7 @@
                 <h5 class="mb-0">Informasi Penghuni</h5>
             </div>
             <div class="card-body">
-                <form action="<?php echo BASE_URL; ?>penghuni/profil/update" method="POST">
+                <form action="<?php echo ROUTE_URL; ?>penghuni/profil/update" method="POST">
                     <div class="form-group mb-3">
                         <label class="form-label">Nama Lengkap</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($penghuni['nama']); ?>" disabled>
@@ -46,7 +46,7 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i> Simpan Perubahan
                         </button>
-                        <a href="<?php echo BASE_URL; ?>penghuni/dashboard" class="btn btn-secondary">
+                        <a href="<?php echo ROUTE_URL; ?>penghuni/dashboard" class="btn btn-secondary">
                             <i class="fas fa-times"></i> Batal
                         </a>
                     </div>
@@ -89,3 +89,4 @@
         </div>
     <?php endif; ?>
 </div>
+

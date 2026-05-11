@@ -3,7 +3,7 @@
         <h2><i class="fas fa-info-circle"></i> Detail Kamar</h2>
     </div>
     <div class="col-md-4 text-end">
-        <a href="<?php echo BASE_URL; ?>admin/kamar" class="btn btn-secondary">
+        <a href="<?php echo ROUTE_URL; ?>admin/kamar" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i> Kembali
         </a>
     </div>
@@ -71,10 +71,10 @@
                 </table>
 
                 <div class="mt-4">
-                    <a href="<?php echo BASE_URL; ?>admin/kamar/edit?id=<?php echo $kamar['id_kamar']; ?>" class="btn btn-warning">
+                    <a href="<?php echo ROUTE_URL; ?>admin/kamar/edit?id=<?php echo $kamar['id_kamar']; ?>" class="btn btn-warning">
                         <i class="fas fa-edit"></i> Edit
                     </a>
-                    <a href="<?php echo BASE_URL; ?>admin/kamar/delete?id=<?php echo $kamar['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus kamar ini?');">
+                    <a href="<?php echo ROUTE_URL; ?>admin/kamar/delete?id=<?php echo $kamar['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus kamar ini?');">
                         <i class="fas fa-trash"></i> Hapus
                     </a>
                 </div>
@@ -82,3 +82,4 @@
         </div>
     </div>
 </div>
+

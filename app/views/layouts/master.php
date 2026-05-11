@@ -362,8 +362,9 @@
             <?php 
             if (isset($flash)) {
                 $type = $flash['type'] ?? 'info';
+                $alertClass = $type === 'error' ? 'danger' : ($type === 'success' ? 'success' : ($type === 'warning' ? 'warning' : 'info'));
                 $message = $flash['message'] ?? '';
-                echo '<div class="alert alert-' . htmlspecialchars($type) . '" role="alert">';
+                echo '<div class="alert alert-' . htmlspecialchars($alertClass) . '" role="alert">';
                 echo htmlspecialchars($message);
                 echo '</div>';
             }

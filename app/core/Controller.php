@@ -30,8 +30,20 @@ class Controller
     // Method untuk redirect
     protected function redirect($url)
     {
-        header("Location: " . BASE_URL . $url);
+        // Jika sudah URL lengkap, gunakan langsung
+        if (filter_var($url, FILTER_VALIDATE_URL) !== false || strpos($url, '/') === 0) {
+            header("Location: " . $url);
+            exit;
+        }
+
+        header("Location: " . ROUTE_URL . ltrim($url, '/'));
         exit;
+    }
+
+    // Method untuk build internal route URL
+    protected function route($path)
+    {
+        return ROUTE_URL . ltrim($path, '/');
     }
 
     // Method untuk check if request is POST

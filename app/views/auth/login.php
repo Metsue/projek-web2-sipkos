@@ -169,13 +169,16 @@
             </div>
 
             <?php if (isset($flash)): ?>
-                <div class="alert alert-<?php echo htmlspecialchars($flash['type']); ?> alert-dismissible fade show" role="alert">
+                <?php
+                $alertClass = $flash['type'] === 'error' ? 'danger' : ($flash['type'] === 'success' ? 'success' : ($flash['type'] === 'warning' ? 'warning' : 'info'));
+                ?>
+                <div class="alert alert-<?php echo htmlspecialchars($alertClass); ?> alert-dismissible fade show" role="alert">
                     <?php echo htmlspecialchars($flash['message']); ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
 
-            <form action="<?php echo BASE_URL; ?>login" method="POST">
+            <form action="<?php echo ROUTE_URL; ?>login" method="POST">
                 <div class="form-group">
                     <label for="email" class="form-label">
                         <i class="fas fa-envelope"></i> Email
@@ -196,7 +199,7 @@
             </form>
 
             <div class="form-footer">
-                Belum punya akun? <a href="<?php echo BASE_URL; ?>register">Daftar di sini</a>
+                Belum punya akun? <a href="<?php echo ROUTE_URL; ?>register">Daftar di sini</a>
             </div>
         </div>
     </div>
@@ -204,3 +207,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

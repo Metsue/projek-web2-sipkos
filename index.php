@@ -26,6 +26,7 @@ if ($base_path === '//') {
     $base_path = '/';
 }
 define('BASE_URL', $base_protocol . '://' . $base_domain . $base_path);
+define('ROUTE_URL', BASE_URL . 'index.php/');
 
 // Define app path
 define('APP', __DIR__ . '/app/');

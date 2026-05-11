@@ -3,7 +3,7 @@
         <h2><i class="fas fa-edit"></i> Edit Kamar</h2>
     </div>
     <div class="col-md-4 text-end">
-        <a href="<?php echo BASE_URL; ?>admin/kamar" class="btn btn-secondary">
+        <a href="<?php echo ROUTE_URL; ?>admin/kamar" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i> Kembali
         </a>
     </div>
@@ -13,7 +13,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <form action="<?php echo BASE_URL; ?>admin/kamar/update?id=<?php echo $kamar['id_kamar']; ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo ROUTE_URL; ?>admin/kamar/update?id=<?php echo $kamar['id_kamar']; ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_kamar" value="<?php echo $kamar['id_kamar']; ?>">
 
                     <div class="form-group mb-3">
@@ -69,7 +69,7 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i> Simpan Perubahan
                         </button>
-                        <a href="<?php echo BASE_URL; ?>admin/kamar" class="btn btn-secondary">
+                        <a href="<?php echo ROUTE_URL; ?>admin/kamar" class="btn btn-secondary">
                             <i class="fas fa-times"></i> Batal
                         </a>
                     </div>
@@ -78,3 +78,4 @@
         </div>
     </div>
 </div>
+

@@ -3,7 +3,7 @@
         <h2><i class="fas fa-users"></i> Data Penghuni</h2>
     </div>
     <div class="col-md-4 text-end">
-        <a href="<?php echo BASE_URL; ?>admin/penghuni/create" class="btn btn-primary">
+        <a href="<?php echo ROUTE_URL; ?>admin/penghuni/create" class="btn btn-primary">
             <i class="fas fa-user-plus"></i> Tambah Penghuni
         </a>
     </div>
@@ -45,13 +45,13 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo BASE_URL; ?>admin/penghuni/show?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-info" title="Detail">
+                                    <a href="<?php echo ROUTE_URL; ?>admin/penghuni/show?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-info" title="Detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="<?php echo BASE_URL; ?>admin/penghuni/edit?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-warning" title="Edit">
+                                    <a href="<?php echo ROUTE_URL; ?>admin/penghuni/edit?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-warning" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="<?php echo BASE_URL; ?>admin/penghuni/delete?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus?');">
+                                    <a href="<?php echo ROUTE_URL; ?>admin/penghuni/delete?id=<?php echo $penghuni['id_penghuni']; ?>" class="btn btn-sm btn-danger" title="Hapus" onclick="return confirm('Yakin ingin menghapus?');">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -65,3 +65,4 @@
         <?php endif; ?>
     </div>
 </div>
+
