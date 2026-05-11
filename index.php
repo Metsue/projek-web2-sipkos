@@ -8,8 +8,7 @@
 <body>
     <h1>PHP Test</h1>
     <?php
-        echo "Hello, World! mubarakk";
-        echo "Hello indra"
+        echo "Hello, wordl, anuu";
     ?>
     
 </body>
