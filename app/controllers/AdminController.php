@@ -817,9 +817,36 @@ class AdminController extends Controller
             $this->redirect('admin/laporan');
         }
 
-        // TODO: Implement PDF export using FPDF library
-        $this->setFlash('success', 'Export PDF sedang dikembangkan');
-        $this->redirect('admin/laporan');
+        require_once APP . 'models/Pembayaran.php';
+        require_once APP . 'core/BasicPdf.php';
+
+        $bulan = $this->post('bulan', date('m'));
+        $tahun = $this->post('tahun', date('Y'));
+
+        $pembayaran_model = new Pembayaran();
+        $pembayaran_list = $pembayaran_model->getByMonth($bulan, $tahun);
+
+        $pdf = new BasicPdf('Laporan Pembayaran ' . $bulan . '/' . $tahun);
+        $pdf->addLine('Tanggal Export: ' . date('d-m-Y H:i:s'));
+        $pdf->addLine('Periode: ' . $bulan . ' / ' . $tahun);
+        $pdf->addLine('Jumlah Data: ' . count($pembayaran_list));
+        $pdf->addLine(str_repeat('-', 90));
+        $pdf->addLine(sprintf('%-4s %-20s %-10s %-16s %-10s %-12s', 'No', 'Nama', 'Kamar', 'Total Bayar', 'Status', 'Tanggal'));
+        $pdf->addLine(str_repeat('-', 90));
+
+        foreach ($pembayaran_list as $key => $item) {
+            $no = $key + 1;
+            $nama = substr($item['nama_penghuni'] ?? '-', 0, 18);
+            $kamar = substr($item['nomor_kamar'] ?? '-', 0, 9);
+            $total = 'Rp ' . number_format($item['total_bayar'], 0, ',', '.');
+            $status = ucfirst($item['status'] ?? '-');
+            $tanggal = $item['tanggal_bayar'] ?? '-';
+
+            $pdf->addLine(sprintf('%-4s %-20s %-10s %-16s %-10s %-12s', $no, $nama, $kamar, $total, $status, $tanggal));
+        }
+
+        $filename = 'laporan-pembayaran-' . $bulan . '-' . $tahun . '.pdf';
+        $pdf->output($filename);
     }
 
     /**

@@ -96,9 +96,11 @@ class Router
      */
     private function matchRoute($pattern, $url, &$params = [])
     {
-        // Convert pattern to regex
-        $pattern_regex = preg_replace_callback('/\{([^}]+)\}/', function($matches) {
-            return '(?P<' . $matches[1] . '>[^/]+)';
+        // Convert pattern placeholders to regex
+        // Support both {id} and :id route parameter syntax
+        $pattern_regex = preg_replace_callback('/(\{([^}]+)\}|:([a-zA-Z_][a-zA-Z0-9_]*))/', function($matches) {
+            $name = !empty($matches[2]) ? $matches[2] : $matches[3];
+            return '(?P<' . $name . '>[^/]+)';
         }, $pattern);
         
         $pattern_regex = '#^' . $pattern_regex . '/?$#';

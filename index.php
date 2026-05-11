@@ -18,10 +18,13 @@ session_start();
 // DEFINE CONSTANTS
 // ============================================
 
-// Get the base URL
-$base_protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+// Get the base URL dynamically so app works inside localhost subfolders
+$base_protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $base_domain = $_SERVER['HTTP_HOST'];
-$base_path = '/projek-web2-sipkos/';
+$base_path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+if ($base_path === '//') {
+    $base_path = '/';
+}
 define('BASE_URL', $base_protocol . '://' . $base_domain . $base_path);
 
 // Define app path
