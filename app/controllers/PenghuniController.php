@@ -33,22 +33,25 @@ class PenghuniController extends Controller
 
         require_once APP . 'models/Penghuni.php';
         require_once APP . 'models/Pembayaran.php';
+        require_once APP . 'models/Kamar.php';
 
         $penghuni_model = new Penghuni();
         $pembayaran_model = new Pembayaran();
+        $kamar_model = new Kamar();
 
         // Get penghuni data
         $penghuni = $penghuni_model->findByUserId($_SESSION['user_id']);
 
         if (!$penghuni) {
-            $this->view('penghuni/missing_profile', [
-                'title' => 'Akun Penghuni Belum Lengkap - SIPKOS'
-            ]);
+            $this->redirect('penghuni/profil/create');
             return;
         }
 
         // Get pembayaran history
         $pembayaran = $pembayaran_model->getByPenghuni($penghuni['id_penghuni']);
+
+        // Get available rooms for dashboard listing
+        $available_rooms = $kamar_model->getAvailable();
 
         // Get statistics
         $stats = [
@@ -64,8 +67,79 @@ class PenghuniController extends Controller
             'title' => 'Dashboard Penghuni - SIPKOS',
             'penghuni' => $penghuni,
             'stats' => $stats,
-            'pembayaran' => $pembayaran
+            'pembayaran' => $pembayaran,
+            'available_rooms' => $available_rooms
         ]);
+    }
+
+    public function createProfile()
+    {
+        $this->checkPenghuni();
+
+        require_once APP . 'models/Kamar.php';
+
+        $kamar_model = new Kamar();
+        $available_rooms = $kamar_model->getAvailable();
+
+        $this->view('penghuni/create_profile', [
+            'title' => 'Lengkapi Profil - SIPKOS',
+            'available_rooms' => $available_rooms,
+            'flash' => $this->getFlash()
+        ]);
+    }
+
+    public function storeProfile()
+    {
+        $this->checkPenghuni();
+
+        if (!$this->isPost()) {
+            $this->redirect('penghuni/profil/create');
+        }
+
+        $nomor_hp = $this->post('nomor_hp');
+        $alamat_asal = $this->post('alamat_asal');
+        $id_kamar = $this->post('id_kamar');
+
+        if (empty($nomor_hp) || empty($alamat_asal) || empty($id_kamar)) {
+            $this->setFlash('error', 'Semua field wajib diisi');
+            $this->redirect('penghuni/profil/create');
+        }
+
+        require_once APP . 'models/Penghuni.php';
+        require_once APP . 'models/Kamar.php';
+
+        $penghuni_model = new Penghuni();
+        $kamar_model = new Kamar();
+
+        $kamar = $kamar_model->getWhere(['id_kamar' => $id_kamar]);
+        $kamar = !empty($kamar) ? $kamar[0] : null;
+
+        if (!$kamar || $kamar['status'] !== 'tersedia') {
+            $this->setFlash('error', 'Kamar tidak tersedia. Silakan pilih kamar lain.');
+            $this->redirect('penghuni/profil/create');
+        }
+
+        $user = $_SESSION['user'];
+
+        $result = $penghuni_model->insert([
+            'nama' => $user['nama'],
+            'email' => $user['email'],
+            'nomor_hp' => $nomor_hp,
+            'alamat_asal' => $alamat_asal,
+            'tanggal_masuk' => date('Y-m-d'),
+            'id_kamar' => $id_kamar,
+            'user_id' => $_SESSION['user_id'],
+            'status' => 'aktif'
+        ]);
+
+        if ($result) {
+            $kamar_model->update(['status' => 'terisi'], ['id_kamar' => $id_kamar]);
+            $this->setFlash('success', 'Profil berhasil dibuat. Selamat datang di dashboard!');
+            $this->redirect('penghuni/dashboard');
+        }
+
+        $this->setFlash('error', 'Gagal menyimpan profil. Silakan coba lagi.');
+        $this->redirect('penghuni/profil/create');
     }
 
     /**

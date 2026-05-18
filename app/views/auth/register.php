@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?? 'Register - SIPKOS'; ?></title>
-    
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         * {
             margin: 0;
@@ -18,119 +14,108 @@
         }
 
         body {
+            min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e6f0ff;
         }
 
         .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
         }
 
         .auth-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 500px;
-            padding: 50px 40px;
-            animation: slideUp 0.5s ease-out;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            padding: 42px 32px;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12);
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .brand-circle {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: #cfe0ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .brand-circle i {
+            color: #2d5bd0;
+            font-size: 28px;
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .auth-header h1 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            color: #333;
-            margin-bottom: 5px;
+            color: #1f324f;
         }
 
-        .auth-header .brand-subtitle {
-            color: #999;
+        .auth-header p {
+            color: #6b7a99;
+            margin-top: 8px;
             font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
         }
 
         .form-label {
             font-weight: 600;
-            color: #333;
-            margin-bottom: 6px;
-            display: block;
-            font-size: 14px;
+            color: #3d4f70;
+            margin-bottom: 8px;
+            font-size: 13px;
         }
 
         .form-control {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 10px;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            border-radius: 14px;
+            border: 1px solid #dce4f2;
+            padding: 12px 14px;
+            background: #f8fbff;
         }
 
         .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 0.2rem rgba(74, 108, 247, 0.16);
         }
 
         .btn-register {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 12px;
-            border-radius: 6px;
+            border-radius: 14px;
+            padding: 12px 0;
+            font-weight: 700;
             width: 100%;
-            transition: all 0.3s ease;
-            margin-top: 10px;
+            background: #2d5bd0;
+            border: none;
         }
 
         .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            color: white;
-            text-decoration: none;
+            background: #244cb0;
         }
 
         .form-footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 18px;
+            color: #6b7a99;
             font-size: 14px;
-            color: #999;
         }
 
         .form-footer a {
-            color: #667eea;
+            color: #2d5bd0;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
         }
 
         .alert {
-            border-radius: 8px;
+            border-radius: 16px;
             border: none;
             margin-bottom: 20px;
         }
@@ -139,9 +124,12 @@
 <body>
     <div class="auth-container">
         <div class="auth-card">
+            <div class="brand-circle">
+                <i class="fas fa-building"></i>
+            </div>
             <div class="auth-header">
-                <h1><i class="fas fa-building" style="color: #667eea;"></i> SIPKOS</h1>
-                <p class="brand-subtitle">Sistem Informasi Pengelolaan Kos</p>
+                <h1>Daftar SIPKOS</h1>
+                <p>Buat akun untuk mengakses dashboard kos</p>
             </div>
 
             <?php if (isset($flash)): ?>
@@ -155,44 +143,32 @@
             <?php endif; ?>
 
             <form action="<?php echo ROUTE_URL; ?>register" method="POST">
-                <div class="form-group">
-                    <label for="nama" class="form-label">
-                        <i class="fas fa-user"></i> Nama Lengkap
-                    </label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama lengkap" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="email" class="form-label">
-                        <i class="fas fa-envelope"></i> Email
-                    </label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email aktif" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="username" class="form-label">
-                        <i class="fas fa-id-card"></i> Username
-                    </label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="password" class="form-label">
-                        <i class="fas fa-lock"></i> Password
-                    </label>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Minimal 6 karakter" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="password_confirm" class="form-label">
-                        <i class="fas fa-lock-open"></i> Konfirmasi Password
-                    </label>
-                    <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Konfirmasi password" required>
+                <div class="mb-4">
+                    <label for="password_confirm" class="form-label">Konfirmasi Password</label>
+                    <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Ulangi password" required>
                 </div>
 
-                <button type="submit" class="btn btn-register">
-                    <i class="fas fa-user-plus"></i> Daftar
-                </button>
+                <button type="submit" class="btn btn-primary btn-register">Daftar</button>
             </form>
 
             <div class="form-footer">

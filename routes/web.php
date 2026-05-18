@@ -63,6 +63,8 @@ $router->post('/admin/laporan/export-pdf', 'admin@exportPDF');
 // ============================================
 
 $router->get('/penghuni/dashboard', 'penghuni@dashboard');
+$router->get('/penghuni/profil/create', 'penghuni@createProfile');
+$router->post('/penghuni/profil/store', 'penghuni@storeProfile');
 $router->get('/penghuni/profil', 'penghuni@profil');
 $router->post('/penghuni/profil/update', 'penghuni@profilUpdate');
 $router->get('/penghuni/pembayaran', 'penghuni@pembayaran');

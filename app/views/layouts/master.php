@@ -350,6 +350,88 @@
             padding: 12px;
             margin-top: 10px;
         }
+
+        .top-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+        }
+
+        .top-panel h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f334f;
+        }
+
+        .top-panel p {
+            color: #6d7c99;
+            margin: 4px 0 0;
+        }
+
+        .top-panel a {
+            color: #1f334f;
+            font-weight: 600;
+        }
+
+        .search-card {
+            background: white;
+            border-radius: 18px;
+            padding: 22px 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .section-title h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f334f;
+        }
+
+        .room-card {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .room-card .room-image {
+            height: 160px;
+            background: linear-gradient(135deg, #dbe8ff 0%, #f7fbff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2865d1;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .room-card .card-body {
+            padding: 24px;
+        }
+
+        .room-card .card-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .room-card .card-text {
+            color: #6d7c99;
+            font-size: 14px;
+            min-height: 60px;
+        }
     </style>
 </head>
 <body>

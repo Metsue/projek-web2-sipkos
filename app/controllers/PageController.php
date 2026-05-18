@@ -32,6 +32,13 @@ class PageController extends Controller
      */
     public function login()
     {
+        if ($this->isLoggedIn()) {
+            if ($this->isAdmin()) {
+                $this->redirect('admin');
+            }
+            $this->redirect('penghuni/dashboard');
+        }
+
         $flash = $this->getFlash();
         $this->view('auth/login', [
             'title' => 'Login - SIPKOS',
@@ -44,6 +51,13 @@ class PageController extends Controller
      */
     public function register()
     {
+        if ($this->isLoggedIn()) {
+            if ($this->isAdmin()) {
+                $this->redirect('admin');
+            }
+            $this->redirect('penghuni/dashboard');
+        }
+
         $flash = $this->getFlash();
         $this->view('auth/register', [
             'title' => 'Register - SIPKOS',

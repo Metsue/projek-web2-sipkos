@@ -95,7 +95,10 @@ class AuthController extends Controller
     {
         // Redirect jika sudah login
         if ($this->isLoggedIn()) {
-            $this->redirect('dashboard');
+            if ($this->isAdmin()) {
+                $this->redirect('admin');
+            }
+            $this->redirect('penghuni/dashboard');
         }
 
         $flash = $this->getFlash();
@@ -172,8 +175,19 @@ class AuthController extends Controller
             $this->redirect('register');
         }
 
-        $this->setFlash('success', 'Registrasi berhasil, silahkan login');
-        $this->redirect('login');
+        // Auto-login after register
+        $_SESSION['user_id'] = $result;
+        $_SESSION['user'] = [
+            'id_user' => $result,
+            'nama' => $nama,
+            'email' => $email,
+            'username' => $username,
+            'role' => 'penghuni'
+        ];
+
+        $this->logActivity('REGISTER', 'users', $result);
+        $this->setFlash('success', 'Registrasi berhasil. Silahkan lengkapi profil Anda.');
+        $this->redirect('penghuni/profil/create');
     }
 
     /**

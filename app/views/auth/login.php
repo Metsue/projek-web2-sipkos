@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?? 'Login - SIPKOS'; ?></title>
-    
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         * {
             margin: 0;
@@ -18,154 +14,124 @@
         }
 
         body {
+            min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e7f2ff;
         }
 
         .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
         }
 
         .auth-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 450px;
-            padding: 50px 40px;
-            animation: slideUp 0.5s ease-out;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 36px 30px;
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .brand-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #dbe8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .brand-circle i {
+            font-size: 30px;
+            color: #2f5ad4;
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
         }
 
         .auth-header h1 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            color: #333;
-            margin-bottom: 5px;
+            color: #1f334f;
+            margin-bottom: 8px;
         }
 
-        .auth-header .brand-subtitle {
-            color: #999;
+        .auth-header p {
+            color: #6d7c99;
             font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
         }
 
         .form-label {
             font-weight: 600;
-            color: #333;
+            color: #3c4f71;
             margin-bottom: 8px;
             display: block;
+            font-size: 13px;
         }
 
         .form-control {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 12px;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            border-radius: 14px;
+            border: 1px solid #dfe7f5;
+            padding: 12px 14px;
+            background: #f9fbff;
         }
 
         .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 0.18rem rgba(74, 108, 247, 0.18);
         }
 
         .btn-login {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100%;
+            border-radius: 14px;
+            padding: 12px 0;
+            font-weight: 700;
+            background: #2f5ad4;
             border: none;
             color: white;
-            font-weight: 600;
-            padding: 12px;
-            border-radius: 6px;
-            width: 100%;
-            transition: all 0.3s ease;
-            margin-top: 10px;
         }
 
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            color: white;
-            text-decoration: none;
+            background: #244bb0;
         }
 
         .form-footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 18px;
+            color: #6d7c99;
             font-size: 14px;
-            color: #999;
         }
 
         .form-footer a {
-            color: #667eea;
+            color: #2f5ad4;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
         }
 
         .alert {
-            border-radius: 8px;
+            border-radius: 16px;
             border: none;
-            margin-bottom: 20px;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .input-group-text {
-            background: transparent;
-            border: 1px solid #ddd;
-            border-right: none;
-        }
-
-        .input-group .form-control {
-            border-left: none;
-        }
-
-        .input-group .form-control:focus {
-            border-left: 1px solid #667eea;
+            margin-bottom: 24px;
         }
     </style>
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-card">
+            <div class="brand-circle">
+                <i class="fas fa-building"></i>
+            </div>
             <div class="auth-header">
-                <h1><i class="fas fa-building" style="color: #667eea;"></i> SIPKOS</h1>
-                <p class="brand-subtitle">Sistem Informasi Pengelolaan Kos</p>
+                <h1>SIPKOS</h1>
+                <p>Masuk untuk mulai mencari kos favoritmu</p>
             </div>
 
             <?php if (isset($flash)): ?>
@@ -179,23 +145,15 @@
             <?php endif; ?>
 
             <form action="<?php echo ROUTE_URL; ?>login" method="POST">
-                <div class="form-group">
-                    <label for="identifier" class="form-label">
-                        <i class="fas fa-envelope"></i> Email atau Username
-                    </label>
+                <div class="mb-3">
+                    <label for="identifier" class="form-label">Email atau Username</label>
                     <input type="text" class="form-control" id="identifier" name="identifier" placeholder="Masukkan email atau username" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">
-                        <i class="fas fa-lock"></i> Password
-                    </label>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
                 </div>
-
-                <button type="submit" class="btn btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Masuk
-                </button>
+                <button type="submit" class="btn btn-login">Masuk</button>
             </form>
 
             <div class="form-footer">
@@ -203,7 +161,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
